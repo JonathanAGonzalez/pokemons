@@ -8,31 +8,37 @@ let initialState = {
 };
 
 const Home = () => {
-  const [{ loading, data }, setValues] = useState(initialState);
-
-  const getOnePokemon = async (url) => {
+  const [values, setValues] = useState(initialState);
+  const { loading, data } = values;
+  const getOnePokemon = async ({ pages, url }) => {
     await axios.get(url).then((response) => {
       setValues((prev) => ({
         loading: false,
+        pages: pages.data,
         data: [...prev.data, response.data],
       }));
     });
   };
 
+  const nextPage = () => {
+    console.log(values);
+  };
+
   useEffect(() => {
     axios.get("https://pokeapi.co/api/v2/pokemon").then((res) => {
       res.data.results.forEach(({ url }) => {
-        getOnePokemon(url);
+        getOnePokemon({ pages: res, url });
       });
     });
   }, []);
-
+  console.log(values);
   return (
     <div>
       {loading ? (
         <Spinner />
       ) : (
         <div className="pokemon__container">
+          <button onClick={nextPage}>Siguiente</button>
           {data.map((poke) => (
             <Pokemon key={poke.name} pokemon={poke} />
           ))}

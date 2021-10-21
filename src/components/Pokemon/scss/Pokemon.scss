@@ -3,10 +3,10 @@
   border-radius: $border;
   padding: $padding;
 }
+
 img {
   width: 70px;
 }
-
 .pokemon {
   &__water {
     @include pokemonBg(0deg, #7af1ea 0%, #91d6f8 100%, 5px, 20px);
