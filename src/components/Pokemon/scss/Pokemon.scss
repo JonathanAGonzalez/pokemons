@@ -1,0 +1,33 @@
+@mixin pokemonBg($deg, $color1, $color2, $border, $padding) {
+  background: linear-gradient($deg, $color1, $color2);
+  border-radius: $border;
+  padding: $padding;
+}
+img {
+  width: 70px;
+}
+
+.pokemon {
+  &__water {
+    @include pokemonBg(0deg, #7af1ea 0%, #91d6f8 100%, 5px, 20px);
+  }
+  &__grass {
+    @include pokemonBg(0deg, #86dba6 0%, #78cdf2 100%, 5px, 20px);
+  }
+  &__bug {
+    @include pokemonBg(172deg, #f9b6aa, #f7776a 100%, 5px, 20px);
+  }
+  &__normal {
+    @include pokemonBg(172deg, #f3f3f3, #e7e5e5 100%, 5px, 20px);
+  }
+  &__fire {
+    @include pokemonBg(172deg, #f9b6aa, #f7776a 100%, 5px, 20px);
+  }
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+  }
+}
