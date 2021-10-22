@@ -1,28 +1,42 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
-
-let initialState = {
-  loading: true,
-  data: null,
-  error: null,
-};
+import { PokeContext } from "../context/PokeContext";
+let allPokemons = [];
 
 export const useFetch = (url) => {
-  const [values, setValues] = useState(initialState);
+  const [values, setValues] = useContext(PokeContext);
+  const [page, setPage] = useState(url);
+  const { loading, data } = values;
+  const nextPage = () => {
+    setPage(values.next);
+  };
+
+  const previousPage = () => {
+    setPage(values.previous);
+  };
 
   useEffect(() => {
-    axios
-      .get(url)
-      .then((resp) => resp.data)
-      .then((data) => {
-        setValues((prevCurrent) => ({
-          ...prevCurrent,
-          loading: false,
-          data,
-        }));
-      })
-      .catch((err) => console.error(err));
-  }, [url]);
+    axios.get(page).then((res) => {
+      allPokemons = [];
+      res.data.results.forEach(({ url }) => {
+        axios.get(url).then((response) => {
+          allPokemons.push(response.data);
+          setValues({
+            loading: false,
+            next: res.data.next,
+            previous: res.data.previous,
+            data: allPokemons,
+          });
+        });
+      });
+    });
+  }, [page, setValues]);
 
-  return values;
+  return {
+    previousPage,
+    nextPage,
+    loading,
+    data,
+    values,
+  };
 };

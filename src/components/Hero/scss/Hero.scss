@@ -1,0 +1,7 @@
+.container {
+  &__hero {
+    background: url('../../../assets/image/bgjpg.jpg') -200px;
+    background-size: cover;
+    height: 100vh;
+  }
+}

@@ -8,6 +8,10 @@ img {
   width: 70px;
 }
 .pokemon {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   &__water {
     @include pokemonBg(0deg, #7af1ea 0%, #91d6f8 100%, 5px, 20px);
   }
@@ -22,6 +26,42 @@ img {
   }
   &__fire {
     @include pokemonBg(172deg, #f9b6aa, #f7776a 100%, 5px, 20px);
+  }
+  &__electric {
+    @include pokemonBg(180deg, #fcf5b0 0%, #fffb69 100%, 5px, 20px);
+  }
+  &__poison {
+    @include pokemonBg(180deg, #e2fcb0 0%, #caff7e 100%, 5px, 20px);
+  }
+  &__ground {
+    @include pokemonBg(180deg, #fce8b0 0%, #fbbe68 100%, 5px, 20px);
+  }
+  &__fairy {
+    @include pokemonBg(180deg, #b0fcf3 0%, #8368fb 100%, 5px, 20px);
+  }
+  &__fighting {
+    @include pokemonBg(180deg, #b0fcf3 0%, #fb68c4 100%, 5px, 20px);
+  }
+  &__psychic {
+    @include pokemonBg(180deg, #bbb0fc 0%, #bbfb68 100%, 5px, 20px);
+  }
+  &__rock {
+    @include pokemonBg(180deg, #838383 0%, #cecece 100%, 5px, 20px);
+  }
+  &__ghost {
+    @include pokemonBg(180deg, #d7b8ff 0%, #3a3939 100%, 5px, 20px);
+  }
+  &__ice {
+    @include pokemonBg(180deg, #b8d9ff 0%, #b8fdff 100%, 5px, 20px);
+  }
+  &__dragon {
+    @include pokemonBg(180deg, #ffb657 0%, #fffeb8 100%, 5px, 20px);
+  }
+  &__dark {
+    @include pokemonBg(180deg, #f1fc8e 0%, #3a3a39 100%, 5px, 20px);
+  }
+  &__steel {
+    @include pokemonBg(180deg, #8ed0fc 0%, #3a3a39 100%, 5px, 20px);
   }
   &__container {
     display: flex;

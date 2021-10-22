@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px;
+  &__logo {
+    &--nav {
+      img {
+        width: 15rem;
+      }
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+  }
+  &__nintendo {
+    background: #ff4c4e;
+    display: flex;
+    padding: 40px;
+    border-radius: 0px 0px 25px 25px;
+    align-items: center;
+    img {
+      width: 10rem;
+    }
+  }
+}

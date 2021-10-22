@@ -1,13 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Home from "./components/Home";
-import reportWebVitals from "./reportWebVitals";
-
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { PokeProvider } from './context/PokeContext';
+import reportWebVitals from './reportWebVitals';
+import './assets/styles/root.scss';
 ReactDOM.render(
   <React.StrictMode>
-    <Home />
+    <PokeProvider>
+      <App />
+    </PokeProvider>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

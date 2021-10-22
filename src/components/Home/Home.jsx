@@ -1,50 +1,28 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import Pokemon from "../Pokemon";
-import Spinner from "../Spinner/Spinner";
-let initialState = {
-  loading: true,
-  data: [],
-};
+import Button from '../../elements/Button';
+import { useFetch } from '../../hooks/useFetch';
 
+import Pokemon from '../Pokemon';
+import Spinner from '../Spinner/Spinner';
+import './scss/Home.scss';
 const Home = () => {
-  const [values, setValues] = useState(initialState);
-  const { loading, data } = values;
-  const getOnePokemon = async ({ pages, url }) => {
-    await axios.get(url).then((response) => {
-      setValues((prev) => ({
-        loading: false,
-        pages: pages.data,
-        data: [...prev.data, response.data],
-      }));
-    });
-  };
+  const { previousPage, nextPage, loading, data, values } = useFetch(
+    'https://pokeapi.co/api/v2/pokemon?offset=0&limit=6'
+  );
 
-  const nextPage = () => {
-    console.log(values);
-  };
-
-  useEffect(() => {
-    axios.get("https://pokeapi.co/api/v2/pokemon").then((res) => {
-      res.data.results.forEach(({ url }) => {
-        getOnePokemon({ pages: res, url });
-      });
-    });
-  }, []);
-  console.log(values);
-  return (
-    <div>
-      {loading ? (
-        <Spinner />
-      ) : (
+  return !loading ? (
+    <div className="container">
+      <div>
+        <Button action={previousPage} text="atras" disable={values.previous} />
+        <Button action={nextPage} text="siguiente" disable={values.next} />
         <div className="pokemon__container">
-          <button onClick={nextPage}>Siguiente</button>
           {data.map((poke) => (
             <Pokemon key={poke.name} pokemon={poke} />
           ))}
         </div>
-      )}
+      </div>
     </div>
+  ) : (
+    <Spinner />
   );
 };
 
