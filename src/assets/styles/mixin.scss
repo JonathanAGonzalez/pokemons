@@ -1,0 +1,12 @@
+@mixin Button($background, $border, $bradius, $color, $padding) {
+  background: $background;
+  border: $border;
+  border-radius: $bradius;
+  color: $color;
+  cursor: pointer;
+  padding: $padding;
+  margin: 20px 0px;
+  &:hover {
+    padding: $padding + 50px;
+  }
+}

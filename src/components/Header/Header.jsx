@@ -11,9 +11,8 @@ const Header = () => {
       <div className="header__nintendo">
         <img src={logoN} alt="Logo Nintendo" />
       </div>
-      <div className="header__search">
-        <Search />
-      </div>
+
+      <Search />
     </header>
   );
 };

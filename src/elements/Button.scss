@@ -1,0 +1,10 @@
+@import '../assets/styles/var.scss';
+.button {
+  @include Button(
+    $orangeLight-button,
+    1px solid transparent,
+    5px,
+    $gray-font,
+    16px 30px
+  );
+}

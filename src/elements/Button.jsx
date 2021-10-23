@@ -1,14 +1,15 @@
-import React from "react";
-
+import './Button.scss';
 const Button = ({ action, disable, text }) => {
   return (
     <>
       {disable === null ? (
-        <button disabled onClick={action}>
+        <button className="button" disabled onClick={action}>
           {text}
         </button>
       ) : (
-        <button onClick={action}>{text}</button>
+        <button className="button" onClick={action}>
+          {text}
+        </button>
       )}
     </>
   );

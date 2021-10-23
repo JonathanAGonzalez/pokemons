@@ -1,14 +1,15 @@
+import Button from '../../elements/Button';
 import './scss/Hero.scss';
-const Hero = ({ children }) => {
+const Hero = ({ children, firstText, secondText, text }) => {
   return (
-    <div className="container__hero">
+    <div className="hero__container">
       {children}
-      <p>Hero</p>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+      <div className="hero__text">
+        <h2 className="hero__title">{firstText}</h2>
+        <h2 className="hero__title">{secondText}</h2>
+        <p>{text}</p>
+        <Button text="See more Pokemons" />
+      </div>
     </div>
   );
 };

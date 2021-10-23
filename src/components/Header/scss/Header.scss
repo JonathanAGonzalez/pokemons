@@ -1,6 +1,8 @@
+@import '../../../assets/styles/var.scss';
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0px 20px;
   &__logo {
     &--nav {
@@ -15,11 +17,44 @@
   &__nintendo {
     background: #ff4c4e;
     display: flex;
-    padding: 40px;
+    padding: 30px;
     border-radius: 0px 0px 25px 25px;
     align-items: center;
     img {
       width: 10rem;
+    }
+  }
+  &__search {
+    display: flex;
+    align-items: center;
+    width: 250px;
+
+    &--group {
+      input[type='search'] {
+        padding: 16px 25px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 5px 5px $grayLight-font;
+        &:focus {
+          padding: 16px 30px;
+          & ~ .header__search--group__icon {
+            transition: ease-in-out 0.6s;
+          }
+        }
+      }
+      &__icon {
+        position: absolute;
+        left: 0px;
+        color: $grayLight-font;
+      }
+      label {
+        display: flex;
+        align-items: center;
+        position: relative;
+        input {
+          transition: ease-in-out 1s;
+        }
+      }
     }
   }
 }

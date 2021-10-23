@@ -4,11 +4,16 @@ import DetailPokemon from './components/DetailPokemon';
 import { Fragment } from 'react';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
+import Footer from './components/Footer';
 
 const App = () => {
   return (
     <Fragment>
-      <Hero>
+      <Hero
+        firstText="Nintendo Kits"
+        secondText="Pokemon Unite"
+        text="A Seed Pokemon tht is the evolved form of Bulbasaur. It has a flower bulb on its back, the weight wich has made it develop strong legs and hips"
+      >
         <Header />
       </Hero>
       <Router>
@@ -17,6 +22,7 @@ const App = () => {
           <Route path="/detail/:id" component={DetailPokemon} />
         </Switch>
       </Router>
+      <Footer />
     </Fragment>
   );
 };

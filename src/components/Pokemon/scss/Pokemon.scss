@@ -8,10 +8,10 @@ img {
   width: 70px;
 }
 .pokemon {
-  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 300px;
   &__water {
     @include pokemonBg(0deg, #7af1ea 0%, #91d6f8 100%, 5px, 20px);
   }

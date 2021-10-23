@@ -1,0 +1,25 @@
+.pokemons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  h4 {
+    width: 100%;
+    margin: 1rem 9rem;
+    font-size: 25px;
+  }
+  &__container {
+    background: #f3f3f3;
+    border-radius: 15px 15px 0px 0px;
+    padding: 20px;
+    max-width: 80rem;
+    margin: 0 auto;
+  }
+  &__loading {
+    height: 100vh;
+  }
+  &__buttons {
+    display: flex;
+    justify-content: space-around;
+  }
+}
