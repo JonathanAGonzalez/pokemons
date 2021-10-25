@@ -1,8 +1,12 @@
+@import '../../../assets/styles/var.scss';
 .pokemons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  a {
+    @include Anchor;
+  }
   h4 {
     width: 100%;
     margin: 1rem 9rem;
@@ -21,5 +25,10 @@
   &__buttons {
     display: flex;
     justify-content: space-around;
+  }
+  &__image {
+    img {
+      width: 10px;
+    }
   }
 }

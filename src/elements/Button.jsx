@@ -1,17 +1,19 @@
+import { Fragment } from 'react';
 import './Button.scss';
-const Button = ({ action, disable, text }) => {
+
+const Button = ({ action, text, previous, next }) => {
   return (
-    <>
-      {disable === null ? (
-        <button className="button" disabled onClick={action}>
-          {text}
-        </button>
-      ) : (
+    <Fragment>
+      {previous !== 'null' ? (
         <button className="button" onClick={action}>
           {text}
         </button>
+      ) : (
+        <button disabled className="button" onClick={action}>
+          {text}
+        </button>
       )}
-    </>
+    </Fragment>
   );
 };
 

@@ -10,3 +10,15 @@
     padding: $padding + 50px;
   }
 }
+
+@mixin Anchor {
+  align-self: flex-start;
+  text-decoration: none;
+  margin: 20px;
+  color: $gray-font;
+  transition: transform 1s;
+  border-bottom: 3px dashed $orangeLight-button;
+  &:hover {
+    transform: translateX(10px);
+  }
+}
