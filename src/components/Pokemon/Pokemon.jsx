@@ -6,6 +6,7 @@ const Pokemon = ({ pokemon }) => {
 
   let type = pokemon.types[0].type.name;
   let sprite = sprites.other.dream_world.front_default;
+
   return (
     <div className={`pokemon pokemon__${pokemon.types[0].type.name}`}>
       <h2>{name}</h2>
@@ -22,6 +23,7 @@ const Pokemon = ({ pokemon }) => {
             <span className="pokemon__text--span">{type}</span>
           </h5>
         </div>
+        <hr />
       </div>
       <div className="pokemon__bg"></div>
       <Link to={`/detail/${id}`}>Ver más</Link>

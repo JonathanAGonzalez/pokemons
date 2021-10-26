@@ -32,13 +32,32 @@
     }
     &--text {
       margin-top: 3rem;
-
+      width: 90%;
+      ul {
+        list-style: none;
+        word-wrap: break-word;
+        li {
+          margin: 5px 0px;
+        }
+      }
       hr {
         height: 3px;
         border: none;
         margin: 10px 0px;
         background: $orangeLight-button;
       }
+    }
+    &--link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include Button(
+        $orangeLight-button,
+        1px dashed $gray-font!important,
+        5px,
+        $gray-font,
+        16px 30px
+      );
     }
   }
 }

@@ -4,7 +4,8 @@ import Button from '../../elements/Button';
 import Spinner from '../../elements/Spinner';
 import Pokemon from '../Pokemon';
 import './scss/PokemonsList.scss';
-const PokemonsList = ({ values, setPage, page }) => {
+
+const PokemonsList = ({ values, setPage }) => {
   const pokeContext = useContext(PokeContext);
   const [{ data, loading, next, previous }] = pokeContext;
 
@@ -13,7 +14,7 @@ const PokemonsList = ({ values, setPage, page }) => {
   };
 
   const previousPage = () => {
-    if (previous !== 'null') setPage(previous);
+    if (previous !== null) setPage(previous);
   };
 
   return !loading ? (
@@ -22,7 +23,12 @@ const PokemonsList = ({ values, setPage, page }) => {
         <div className="pokemons">
           <h4>Listado de pokemons</h4>
           {data.map((poke) => (
-            <Pokemon key={poke.name} pokemon={poke} values={values} />
+            <Pokemon
+              key={poke.name}
+              pokemon={poke}
+              values={values}
+              loading={loading}
+            />
           ))}
         </div>
         <div className="pokemons__buttons">

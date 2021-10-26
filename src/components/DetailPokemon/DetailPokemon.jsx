@@ -1,10 +1,12 @@
+import axios from 'axios';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { GrFormPreviousLink } from 'react-icons/gr';
-import axios from 'axios';
-import './scss/DetailPokemon.scss';
 import Spinner from '../../elements/Spinner';
+import Characteristic from '../Characteristic';
+import './scss/DetailPokemon.scss';
 
 const DetailPokemon = () => {
   let { id } = useParams();
@@ -12,6 +14,24 @@ const DetailPokemon = () => {
     loading: true,
     data: {},
   });
+
+  const abilitiesMap = () => {
+    return data.abilities.map(({ ability }) => (
+      <li key={ability.name}>{ability.name}</li>
+    ));
+  };
+
+  const movesMap = () => {
+    return data.moves.map(({ move }, index) => {
+      let name = move.name[0].toUpperCase().concat(move.name.slice(1));
+      let i = 5;
+      if (index <= i) {
+        return <li key={move.name}>{name}</li>;
+      } else {
+        return null;
+      }
+    });
+  };
 
   useEffect(() => {
     axios
@@ -34,43 +54,49 @@ const DetailPokemon = () => {
   }, [id]);
 
   return !loading ? (
-    <div className="pokemons__container container__detail">
-      <Link to="/">
-        <GrFormPreviousLink />
-        Volver
-      </Link>
-      {!loading && (
-        <div className="container__detail--item">
-          <h3>{data.name}</h3>
-          <img
-            src={data.sprites.other.dream_world.front_default}
-            alt={data.name}
-          />
-          <div className="container__detail--text">
-            <p>
-              <strong>Nombre del pokemon: </strong>
-              {data.name}
-            </p>
-            <hr />
-            <p>
-              <strong>Tipo de pokemon: </strong>
-              {data.types[0].type.name}
-            </p>
-            <hr />
-            <p>
-              <strong>Experiencia Base: </strong>
-              {data.base_experience}
-            </p>
-            <hr />
-            <p>
-              <strong>Caracteristica: </strong>
-              <br />
-              {abilities.flavor_text}
-            </p>
+    <HelmetProvider>
+      <Helmet>
+        <title>Pokemon || {data.name}</title>
+      </Helmet>
+      <div className="pokemons__container container__detail">
+        <Link to="/" className="container__detail--link">
+          <GrFormPreviousLink />
+          Volver
+        </Link>
+        {!loading && (
+          <div className="container__detail--item">
+            <h3>{data.name}</h3>
+            <img
+              src={data.sprites.other.dream_world.front_default}
+              alt={data.name}
+            />
+            <div className="container__detail--text">
+              <Characteristic
+                title="Nombre del pokemon"
+                characteristic={data.name}
+              />
+              <Characteristic
+                title="Tipo de Pokemon"
+                characteristic={data.types[0].type.name}
+              />
+              <Characteristic
+                title="Experiencia Base"
+                characteristic={data.base_experience}
+              />
+              <Characteristic
+                title="Caracteristica"
+                characteristic={abilities.flavor_text}
+              />
+              <Characteristic
+                title="Habilidades"
+                characteristic={abilitiesMap()}
+              />
+              <Characteristic title="Movimientos" characteristic={movesMap()} />
+            </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </HelmetProvider>
   ) : (
     <Spinner />
   );

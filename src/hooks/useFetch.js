@@ -14,8 +14,8 @@ export const useFetch = (url) => {
         return res;
       });
 
-      const next = String(data.next);
-      const previous = String(data.previous);
+      const next = data.next;
+      const previous = data.previous;
 
       setValues((prev) => ({ ...prev, next: next, previous: previous }));
 

@@ -1,3 +1,3 @@
 module.exports = {
-  links: ['Nintendo Switch', 'Nintendo 3Ds 2DF', 'GameStore'],
+  links: ['Nintendo Switch', 'GameStore'],
 };

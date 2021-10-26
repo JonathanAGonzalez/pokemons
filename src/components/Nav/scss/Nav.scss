@@ -1,4 +1,8 @@
+@import '../../../assets/styles/var.scss';
 .nav {
+  @media screen and (max-width: $tablet) {
+    display: none;
+  }
   ul {
     display: flex;
     list-style: none;

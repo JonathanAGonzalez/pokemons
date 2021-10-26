@@ -1,9 +1,14 @@
 @import '../../../assets/styles/var.scss';
 .header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 0px 20px;
+  @media screen and (max-width: $tablet) {
+    justify-content: center;
+    margin-bottom: 30px;
+  }
   &__logo {
     &--nav {
       img {
@@ -20,6 +25,9 @@
     padding: 30px;
     border-radius: 0px 0px 25px 25px;
     align-items: center;
+    @media screen and (max-width: $tablet) {
+      display: none;
+    }
     img {
       width: 10rem;
     }

@@ -1,10 +1,10 @@
 import { Fragment } from 'react';
 import './Button.scss';
 
-const Button = ({ action, text, previous, next }) => {
+const Button = ({ action, text, previous }) => {
   return (
     <Fragment>
-      {previous !== 'null' ? (
+      {previous !== null ? (
         <button className="button" onClick={action}>
           {text}
         </button>

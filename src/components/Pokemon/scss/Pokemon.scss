@@ -11,10 +11,15 @@
   align-items: center;
   justify-content: space-between;
   width: 300px;
-  height: 400px;
   color: $gray-font;
   box-shadow: 0px 0px 5px #22222265;
   transition: ease-in-out 0.3s;
+  @media screen and(max-width:$tablet) {
+    width: 45%;
+  }
+  @media screen and(max-width:$mobile) {
+    width: 300px;
+  }
   &:hover {
     transform: scale(1.02);
   }
@@ -29,6 +34,7 @@
     align-items: flex-start;
     justify-content: space-around;
     width: 100%;
+    padding-top: 3rem;
     &--span {
       border-radius: 5px;
       background: #f3f3f3;
@@ -40,6 +46,7 @@
   }
   &__image {
     position: relative;
+    padding-top: 4rem;
     z-index: 2;
   }
   &__bg {
